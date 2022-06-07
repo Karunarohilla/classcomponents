@@ -4,15 +4,16 @@ import Spinner from './Spinner';
 
 export default class News extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         console.log('News Constructor.');
         this.state={
             articles: [],
             loading: false,
             page: 1
         }
-    }
+        document.title=`${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} - NewsMonkey App`;
+    } 
 
     async updateNews(){
         const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43d02a61e26f47638be60ac5e4c5ff4e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -93,7 +94,7 @@ export default class News extends Component{
         return(
             <>
                 <div className="container">
-                    <h2>News Component</h2>
+                    <h2 className='text-center my-4'>{`NewsMonkey - Top ${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} Headlines`}</h2>
                     {this.state.loading && <Spinner />}
                     <div className="row">
                         {!this.state.loading && this.state.articles.map((element)=>{
