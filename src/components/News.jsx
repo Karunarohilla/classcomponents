@@ -18,7 +18,7 @@ export default class News extends Component{
     } 
 
     async updateNews(){
-        const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43d02a61e26f47638be60ac5e4c5ff4e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({loading: true});
         let data=await fetch(url);
         let parsedData=await data.json();
@@ -96,7 +96,7 @@ export default class News extends Component{
             page: this.state.page + 1
         })
 
-        const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43d02a61e26f47638be60ac5e4c5ff4e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({loading: true})
 
         let data=await fetch(url);
